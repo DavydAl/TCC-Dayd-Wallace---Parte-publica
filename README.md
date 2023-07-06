@@ -27,7 +27,9 @@ UNISUAM - Bonsucesso
 
 ## Observações
 
-Por favor, observe que este repositório contém apenas uma amostra limitada do código do projeto, fornecendo apenas uma visão parcial do sistema desenvolvido.
+Este repositório contém apenas uma amostra limitada do código do projeto, fornecendo apenas uma visão parcial do sistema desenvolvido.
+
+**Este código não é executável diretamente ao ser baixado e não constitui um sistema funcional. É fornecido apenas para fins de análise e referência do código fonte do projeto.**
 
 ## Instruções do Orientador
 
