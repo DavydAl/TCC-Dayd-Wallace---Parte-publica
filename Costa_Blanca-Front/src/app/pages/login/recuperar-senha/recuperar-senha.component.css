@@ -1,0 +1,13 @@
+img {
+  width: 40%;
+  filter: invert(100%);
+}
+
+.btn-voltar {
+  background-color: transparent;
+  border: none;
+}
+
+.voltar {
+  font-size: 1.7rem;
+}

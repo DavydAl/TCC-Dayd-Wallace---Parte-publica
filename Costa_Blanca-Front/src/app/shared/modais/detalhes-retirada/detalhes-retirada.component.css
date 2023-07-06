@@ -1,0 +1,42 @@
+.modal-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-item {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.modal-item label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.modal-ticket {
+  font-weight: bold;
+}
+
+.mat-table {
+  margin-top: 10px;
+}
+
+.modal-total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.modal-total label {
+  margin-right: 10px;
+}
+
+.modal-total p {
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}

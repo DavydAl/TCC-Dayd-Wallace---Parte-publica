@@ -1,0 +1,119 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+/* Importing Bootstrap SCSS file. */
+@import "./node_modules/bootstrap/scss/bootstrap";
+
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+@import "./node_modules/bootstrap/scss/bootstrap";
+
+html,
+body {
+  height: 100%;
+  // font-family: Courier New !important;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-error {
+  color: red;
+}
+
+.mdc-text-field {
+  padding: 9px 16px !important;
+}
+
+table tr:nth-child(even) {
+  height: 40px;
+  background-color: #c9c9c9;
+  opacity: 0.8;
+
+}
+
+.card-filtro {
+  margin-bottom: 3%;
+}
+
+.snackbar-success {
+  --mdc-snackbar-container-color: green !important;
+  --mdc-snackbar-supporting-text-color: white !important;
+  color: #c9c9c9;
+}
+
+.snackbar-error {
+  --mdc-snackbar-container-color: red !important;
+  --mdc-snackbar-supporting-text-color: white !important;
+  color: #c9c9c9;
+}
+
+.invalid-field input.ng-invalid {
+  border-color: red;
+}
+
+.invalid {
+  border-color: red;
+}
+
+.invalid-field {
+  border-color: red;
+}
+
+.is-invalid {
+  border-color: red;
+}
+
+
+
+
+.nav-link.selected {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.fixed-width {
+  width: 200px;
+}
+
+.top-botao {
+  margin-top: 25px;
+}
+
+.heading-style {
+  background-color: #45484c;
+  color: white;
+  text-align: center;
+  width: 100%;
+  margin-top: 30px !important;
+  height: 30px;
+  padding: 3px;
+}
+
+.erro-filtro {
+  display: flex;
+  color: black;
+  justify-content: center;
+  margin: 100px !important;
+}
+
+.exportar-excel {
+  margin-right: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}

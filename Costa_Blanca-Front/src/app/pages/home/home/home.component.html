@@ -1,0 +1,46 @@
+<div class="d-flex colum align-items-center justify-content-between">
+  <i class="bi bi-info-circle info-dash"
+    matTooltip="Os dados exibidos se refem ao mês selecionado, basta alaterar para visualizar"></i>
+  <mat-card-title class="titulo-mes"> DADOS DO MÊS ATUAL</mat-card-title>
+  <div class="retirada-produto dropdown" [class.show]="dropdownVisible">
+    <button type="button" class="btn btn-secondary dropdown-toggle" (click)="toggleDropdown()"
+      [attr.aria-expanded]="dropdownVisible ? 'true' : 'false'">
+      Período: {{ months[selectedMonth] }}
+    </button>
+    <div class="dropdown-menu" [class.show]="dropdownVisible">
+      <button *ngFor="let month of months; let i = index" class="dropdown-item" type="button"
+        (click)="selectMonth(i)">{{ month }}</button>
+    </div>
+  </div>
+
+
+
+</div>
+<hr>
+
+<div class="d-flex colum align-items-center justify-content-between">
+  <div class="qtd-retirada">
+    <div class="name-qtd">
+      Quantidade de tickets de retirada<br>
+      Mês atual
+    </div>
+    <div class="qtd">
+      {{tickets}} <i class="bi bi-ticket"></i>
+    </div>
+  </div>
+
+  <div *ngIf="exibirSemana">
+    <grafico-comparativo-retiradas [semanasModel]="semanasModel"
+      class="grafico-comparativo"></grafico-comparativo-retiradas>
+  </div>
+  <div *ngIf="exibirSemana">
+    <grafico-saida-produtos [semanasModel]="semanasModel"></grafico-saida-produtos>
+  </div>
+</div>
+
+<div class="d-flex mt-5 colum align-items-center justify-content-between">
+  <div *ngIf="temMovimentacao">
+    <app-grafico-pizza [movimentacaoModel]="movimentacaoModel"></app-grafico-pizza>
+  </div>
+  <ranking-produtos [lstRankingModel]="lstRankingModel" class="ranking-produtos"></ranking-produtos>
+</div>

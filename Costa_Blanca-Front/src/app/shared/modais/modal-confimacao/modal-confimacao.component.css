@@ -1,0 +1,19 @@
+.btn-confirm-modal {
+  background-color: red;
+  color: white;
+  width: 30%;
+}
+
+.btn-cancel-modal {
+  width: 30%;
+}
+
+.botoes-modal {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+h1 {
+  background-color: black;
+  color: white !important;
+}

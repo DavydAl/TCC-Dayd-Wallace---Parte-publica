@@ -1,0 +1,171 @@
+<div class="container" *ngIf="dataCarregada">
+  <div class="d-flex justify-content-between column mt-2">
+    <h1 class="d-flex text-center align-content-center m-2">Registrar Saída</h1>
+    <div class=" d-flex">
+      <div class="form-group p-lg-3">
+        <label for="data">Usuário</label>
+        <select name="" [disabled]="!perfilGerencial" class="form-select fixed-width" [(ngModel)]="retirada.usuarioId">
+          <option *ngFor="let item of lstUsuario" [value]="item.id" [selected]="item.id === usuarioLogado.id">
+            {{ item.nome }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group p-lg-3">
+        <label for="data">Data</label>
+        <input [disabled]="!perfilGerencial" class="form-control" type="date" [(ngModel)]="retirada.dataRetirada"
+          [value]="formatDate(retirada.dataRetirada)" (blur)="updateDate()">
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="container mt-2">
+    <div class="d-flex column justify-content-between mb-2">
+      <div class="form-group col-md-8">
+        <label for="descricaoProduto">Descrição do Produto</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="descricaoProduto" [(ngModel)]="filtro.descricao">
+          <div class="input-group-append">
+            <span class="btn input-group-text" (click)="buscarProduto()"><i class="bi bi-search"></i></span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div class="form-group mt-2 col-2 mr-2">
+            <label for="descricaoProduto">Cor</label>
+            <select name="" id="" class="form-select fixed-width" [(ngModel)]="filtro.corId">
+              <option value="">selecione</option>
+              <option *ngFor="let item of lstCor" [ngValue]="item.id">{{item.descricao}}</option>
+            </select>
+          </div>
+
+          <div class="form-group mt-2 col-2 mr-2">
+            <label for="descricaoProduto">Tamanho</label>
+            <select name="" [(ngModel)]="filtro.tamanhoId" class="form-select fixed-width">
+              <option value="">selecione</option>
+              <option *ngFor="let item of lstTamanho" [ngValue]="item.id">{{item.descricao}}</option>
+            </select>
+          </div>
+          <div class="form-group mt-2 col-4 mr-2">
+            <label for="descricaoProduto">Forma de retirada</label>
+            <select required name="" id="" class="form-select fixed-width" [(ngModel)]="retirada.formaRetiradaId">
+              <option *ngFor="let item of lstFormaRetirada" [ngValue]="item.id">{{item.descricao}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid para exibir os itens correspondentes -->
+      <div class="table-lista-produto">
+        <h3>Produtos</h3>
+        <table class="table" [class.empty]="produtosFiltrados.length === 0">
+          <tbody>
+            <tr *ngFor="let produto of produtosFiltrados">
+              <td class="w-75">
+                {{ produto.descricao }} {{ getCorName(produto.corId) }} {{ getTamanhoName(produto.tamanhoId) }}
+              </td>
+              <td class="w-25">
+                <a class="input-group-circle" matTooltip="Adicionar" (click)="adicionarProduto(produto)">
+                  <i class="bi bi-plus-circle"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div class="mat-table-container mat-elevation-z3">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef class="largest-column">Nome do produto</th>
+        <td mat-cell *matCellDef="let produto" [ngStyle]="{ 'flex': '1 1 auto' }" class="left-aligned">{{
+          produto.produtoNome}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="qtd">
+        <th mat-header-cell *matHeaderCellDef style="width: 15%">Quantidade</th>
+        <td mat-cell *matCellDef="let product" style="width: 10%" class="centered-column">
+          <div class="d-flex align-items-center justify-content-center">
+            <input class="form-control" type="number" min="0" [(ngModel)]="product.quantidade"
+              (change)="updateTotal(product)">
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="precoUnico">
+        <th mat-header-cell *matHeaderCellDef style="width: 15%">Preço Unitário</th>
+        <td mat-cell *matCellDef="let product" style="width: 15%" class="centered-column">
+          <div class="d-flex align-items-center justify-content-center">
+            <span style="margin-right: 5px;font-size: 1rem;">R$</span><input disabled class="form-control" type="number"
+              min="0" [(ngModel)]="product.valorUnitario">
+
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="desconto">
+        <th mat-header-cell *matHeaderCellDef style="width: 15%">Desconto</th>
+        <td mat-cell *matCellDef="let product" style="width: 15%" class="centered-column">
+          <div class="d-flex align-items-center justify-content-center">
+            <span style="margin-right: 5px;font-size: 1rem;">R$</span><input class="form-control" type="number" min="0"
+              [(ngModel)]="product.desconto" (change)="updateTotal(product)">
+
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef style="width: 15%">Total</th>
+        <td mat-cell *matCellDef="let product" style="width: 15%" class="centered-column">R{{product.valorTotalProdutos
+          | currency }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acao">
+        <th mat-header-cell *matHeaderCellDef class="centered-column" style="width: 1%">Remover</th>
+        <td mat-cell *matCellDef="let product" class="centered-column" style="width: 1%">
+          <div class="d-flex align-items-center justify-content-center">
+            <a matTooltip="Remover" (click)="removerProduto(product.id)">
+              <i class="bi bi-trash"></i>
+            </a>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let product; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <div class="d-flex container mt-2 justify-content-between align-items-center">
+    <div class="form-group  col-md-5">
+      <label class="form-label">Cliente</label>
+      <select class="form-select" [(ngModel)]="retirada.clienteId">
+        <option [ngValue]="item.id" *ngFor="let item of lstCliente"> {{item.nomeRazao}}</option>
+      </select>
+    </div>
+
+    <div class="form-group p-lg-3 col-md-4">
+      <label class="form-label">Funcionário</label>
+      <select name="" id="" class="form-select" [disabled]="!perfilGerencial" [(ngModel)]="retirada.funcionarioId">
+        <option *ngFor="let item of lstFuncionario" [ngValue]="item.id"> {{item.nomeCompleto}}</option>
+      </select>
+    </div>
+
+    <mat-card-title class="mt-4  col-md-3 d-flex justify-content-end">Valor
+      Total: R$ {{
+      calculateTotalValue(retirada.items) |
+      number:'1.2-2'
+      }}</mat-card-title>
+  </div>
+  <div class="mt-4 d-flex justify-content-between">
+    <button mat-button mat-dialog-close class="fixed-width cancelar">Cancelar</button>
+    <button mat-button cdkFocusInitial class=" salvar" (click)="registrarRetirada()">Registrar</button>
+  </div>
+</div>

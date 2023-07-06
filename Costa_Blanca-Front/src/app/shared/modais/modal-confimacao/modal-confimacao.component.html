@@ -1,0 +1,8 @@
+<h1 mat-dialog-title align="center">{{modal.titulo}}</h1>
+<mat-dialog-conten mat-dialog-content>
+  {{modal.descricao}}
+</mat-dialog-conten>
+<mat-dialog-actions mat-dialog-actions class='botoes-modal'>
+  <button class="btn-cancel-modal" mat-button [mat-dialog-close]="false">Não</button>
+  <button class="btn-confirm-modal" mat-button mat-dialog-close cdkFocusInitial (click)="confirmar(true)">Sim</button>
+</mat-dialog-actions>

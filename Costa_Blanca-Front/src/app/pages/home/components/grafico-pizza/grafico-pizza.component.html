@@ -1,0 +1,30 @@
+<div class="d-flex">
+  <div>
+    <canvas #chart></canvas>
+  </div>
+  <div class="grafico-grid">
+    <div class="card-table">
+      <div class="mat-mdc-row mdc-data-table__row tabela-titulo-grafico">
+        <div class="itens-retirados header-column">Movimentação</div>
+        <div class="itens-qtd header-column">Quantidade</div>
+        <div class="itens-prct header-column">Porcentagem</div>
+      </div>
+      <hr>
+      <div class="mat-mdc-row mdc-data-table__row tabela-titulo-grafico">
+        <div class="itens-retirados">Itens Retirados do Estoque</div>
+        <div class="itens-qtd">{{ itensRetiradosEstoque.qtd }}</div>
+        <div class="itens-prct">{{ itensRetiradosEstoque.prct }}</div>
+      </div>
+      <div class="mat-mdc-row mdc-data-table__row tabela-titulo-grafico io-table">
+        <div class="itens-retirados">Itens cancelados</div>
+        <div class="itens-qtd">{{ itensCancelados.qtd }}</div>
+        <div class="itens-prct">{{ itensCancelados.prct }}</div>
+      </div>
+      <div class="mat-mdc-row mdc-data-table__row tabela-titulo-grafico">
+        <div class="itens-retirados">Total Movimentado</div>
+        <div class="itens-qtd">{{ totalMovimentado.qtd }}</div>
+        <div class="itens-prct">{{ totalMovimentado.prct }}</div>
+      </div>
+    </div>
+  </div>
+</div>

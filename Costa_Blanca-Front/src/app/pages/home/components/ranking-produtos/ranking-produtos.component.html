@@ -1,0 +1,28 @@
+<div class="ranking-produtos p-1">
+  <div class="d-flex align-items-center justify-content-between p-1">
+    <i class="bi bi-info-circle" matTooltip="Mostra o ranking de produtos que mais foram retirados do sistema"></i>
+    <mat-card-title class="text-center">RANKING DOS PRODUTOS</mat-card-title>
+    <div></div>
+  </div>
+  <mat-card-content>
+    <table mat-table [dataSource]="lstRankingModel">
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>Posição</th>
+        <td mat-cell *matCellDef="let row; let i = index"><span class="bi bi-trophy"></span>{{ i + 1 }}º</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nome do Produto</th>
+        <td mat-cell *matCellDef="let row">{{ row.descricao }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="percentage">
+        <th mat-header-cell *matHeaderCellDef>%</th>
+        <td mat-cell *matCellDef="let row">{{ row.porcentagem }}%</td>
+      </ng-container>
+
+      <tr mat-row *matRowDef="let row; columns: ['position', 'name', 'percentage']; let i = index"
+        [ngClass]="getRowClass(i)"></tr>
+    </table>
+  </mat-card-content>
+</div>

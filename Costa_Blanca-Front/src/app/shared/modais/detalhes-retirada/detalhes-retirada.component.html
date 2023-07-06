@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>Detalhes da Retirada</h1>
+<div mat-dialog-content>
+  <div class=" d-flex justify-content-between">
+    <p><strong>Ticket:</strong> {{ data.retirada?.ticket }}</p>
+
+    <p *ngIf="data.retirada?.cancelado == true" class="error">Cancelado</p>
+  </div>
+  <div class=" d-flex justify-content-between">
+    <p><strong>Data da Retirada:</strong> {{ data.retirada?.dataRetirada | date: 'dd/MM/yyyy'}}</p>
+    <p *ngIf="data.retirada?.dataCancelamento" class="error">{{data.retirada?.dataCancelamento | date: 'dd/MM/yyyy'}}
+    </p>
+  </div>
+  <p><strong>Cliente:</strong> {{ cliente }}</p>
+  <p><strong>Funcionário:</strong> {{ funcionario }}</p>
+  <p><strong>Tipo de Retirada:</strong> {{ tipoRetirada }}</p>
+
+
+  <p *ngIf="data.retirada?.cancelado == true"><strong class="error">Motivo Cancelamento: </strong> {{
+    data.retirada?.obs }}</p>
+
+  <h2>Itens de Retirada</h2>
+  <mat-table [dataSource]="data.retirada?.items || []" class="mat-elevation-z8 table-retirada">
+    <ng-container matColumnDef="produtoNome">
+      <mat-header-cell *matHeaderCellDef> Produto </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.produtoNome }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="quantidade">
+      <mat-header-cell *matHeaderCellDef> Quantidade </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.quantidade }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="valorUnitario">
+      <mat-header-cell *matHeaderCellDef> Valor Unitário </mat-header-cell>
+      <mat-cell *matCellDef="let item"> R$ {{ item.valorUnitario | number:'1.2-2'}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="desconto">
+      <mat-header-cell *matHeaderCellDef> Desconto </mat-header-cell>
+      <mat-cell *matCellDef="let item"> R$ {{ item.desconto || '0'| number:'1.2-2' }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="valorTotal">
+      <mat-header-cell *matHeaderCellDef> Valor Total </mat-header-cell>
+      <mat-cell *matCellDef="let item"> R$ {{ item.valorTotalProdutos | number:'1.2-2'}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row
+      *matHeaderRowDef="['produtoNome', 'quantidade', 'valorUnitario', 'desconto', 'valorTotal']"></mat-header-row>
+    <mat-row
+      *matRowDef="let row; columns: ['produtoNome', 'quantidade', 'valorUnitario', 'desconto', 'valorTotal']"></mat-row>
+  </mat-table>
+
+  <mat-card-title class="d-flex mt-4 justify-content-end">Valor Total: R$ {{
+    calculateTotalValue(data.retirada?.items) |
+    number:'1.2-2'
+    }}</mat-card-title>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Fechar</button>
+</div>

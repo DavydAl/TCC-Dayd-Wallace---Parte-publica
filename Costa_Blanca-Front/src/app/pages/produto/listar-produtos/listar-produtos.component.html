@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-between">
+  <h1 class="texto-principal">Produtos</h1>
+  <div>
+    <exportar-excel *ngIf="perfilGerencial" [tituloExcel]="'Dados dos Produtos'" [tituloCampos]="nomeColunaExcel"
+      [data]="data"></exportar-excel>
+    <button type="button" class="btn btn-primary fixed-width" (click)="navigate('produto/novo')">Adicionar</button>
+  </div>
+</div>
+
+<filtrar-produtos [lstColecao]="lstColecao" [lstCor]="lstCor" [lstEstoque]="lstEstoque" [lstLinha]="lstLinha"
+  [lstMarca]="lstMarca" [lstSetor]="lstSetor" [lstTamanho]="lstTamanho" [lstFornecedor]="lstFornecedor"
+  (filtroAlterado)="filtrar($event)"></filtrar-produtos>
+
+<div class="tabela-listagem mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="codigo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center text-nowrap col-1 ">Codigo Produto</th>
+      <td mat-cell *matCellDef="let produto" class="col-1 text-center">{{ produto.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="col-4 text-nowrap">Nome/Cor/Tamanho</th>
+      <td mat-cell *matCellDef="let produto" class="col-4 text-left">{{ produto.descricao+' '+getNomeCad(produto.corId,
+        lstCor)+' '+getNomeCad(produto.tamanhoId, lstTamanho)}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="referencia">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center col-1">Referência</th>
+      <td mat-cell *matCellDef="let produto" class="col-1 text-center">{{ produto.referencia}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="codigoAuxiliar">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center text-nowrap col-1">Código Auxiliar</th>
+      <td mat-cell *matCellDef="let produto" class="col-1 text-center">{{ produto.codigoAuxiliar}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fornecedores">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="col-3">Fornecedor</th>
+      <td mat-cell *matCellDef="let produto" class="col-3 text-left">{{ getNomeFornecedor(produto.fornecedorId)}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="preco">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center text-nowrap col-1">Preço Unitário</th>
+      <td mat-cell *matCellDef="let produto" class="col-1 text-center">{{ transformReal(produto.precoVenda) }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantidade">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center text-nowrap col-1">Qtd. Estoque</th>
+      <td mat-cell *matCellDef="let produto" class="col-1 text-center">{{ produto.quantidade }} <a
+          *ngIf="perfilGerencial" matTooltip="Editar quantidade em estoque" (click)="alterarQuantidade(produto)"> <i
+            class="bi bi-pencil-fill"></i></a></td>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef class="col-1"></th>
+      <td mat-cell *matCellDef="let row" class="col-1 text-nowrap text-right">
+        <div *ngIf="perfilGerencial">
+          <a matTooltip="Editar Produto" (click)="navigate('produto/edit/'+row.id)"> <i
+              class="bi bi-pencil-square"></i></a>
+          <a matTooltip="Inativar Produto" *ngIf="row.status" (click)="openDialog(row)"> <i class="bi bi-trash"></i></a>
+        </div>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        <h1 class="erro-filtro">Não foram localizados dados no filtro passado. <br> Faça um novo filtro, ou tente
+          novamente.</h1>
+      </td>
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[ 10, 25, 50, 75, 100, 500]" [pageSize]="25"></mat-paginator>
+</div>

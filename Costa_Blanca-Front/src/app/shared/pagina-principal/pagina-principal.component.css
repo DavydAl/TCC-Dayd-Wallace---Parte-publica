@@ -1,0 +1,44 @@
+.card-pricipal {
+  height: calc(100vh - 50px);
+  /* height: calc(100vh - 40px); */
+  /* margin: 10px; */
+  /* border-radius: 10px; */
+  padding: 16px;
+  overflow: auto;
+  background-color: #fff;
+}
+
+.icone-menu {
+  font-size: 25px;
+  margin-left: 10px;
+  color: #45484c;
+}
+
+.pagina {
+  background-color: #c9c9c9;
+}
+
+.menu-expanded {
+  transition: all 0.5s ease;
+}
+
+.bi-person-circle {
+  font-size: 40px;
+  color: #45484c;
+}
+
+.menu-topo {
+  margin: 7px 0px;
+}
+
+/* @media (min-width: 992px) {
+  .menu-expanded {
+    width: 10% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .menu-expanded {
+    width: 30% !important;
+  }
+} */

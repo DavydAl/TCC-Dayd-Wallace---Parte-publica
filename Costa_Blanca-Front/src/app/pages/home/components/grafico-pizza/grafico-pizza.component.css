@@ -1,0 +1,60 @@
+.d-flex {
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.io-table {
+  background-color: #ccc;
+  transition: background-color 0.3s ease;
+}
+
+.io-table:hover {
+  background-color: #fff;
+}
+
+.card-table {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-row {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.card-column {
+  flex: 1;
+}
+
+.header-column {
+  font-weight: bold;
+}
+
+.tabela-titulo-grafico {
+  align-items: center;
+  display: flex;
+  text-wrap: nowrap;
+  padding-left: 10px;
+}
+
+.card-column {
+  width: 200px; /* Defina a largura desejada */
+}
+
+.itens-qtd {
+  width: 130px;
+  text-align: center;
+}
+
+.itens-prct {
+  width: 130px;
+  text-align: center;
+}
+
+.itens-retirados {
+  width: 230px;
+}

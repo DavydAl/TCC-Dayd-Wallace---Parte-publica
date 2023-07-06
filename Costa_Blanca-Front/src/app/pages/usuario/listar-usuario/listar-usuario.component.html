@@ -1,0 +1,57 @@
+<div class="d-flex justify-content-between">
+  <h1 class="texto-principal">Usuários</h1>
+  <div>
+    <exportar-excel *ngIf="perfilGerencial" [tituloExcel]="'Dados de Usuários'" [tituloCampos]="nomeColunaExcel"
+      [data]="data"></exportar-excel>
+    <button type="button" class="btn btn-primary fixed-width" (click)="navigate('usuario/novo')">Adicionar</button>
+  </div>
+
+</div>
+
+<filtrar-usuario (filtroAlterado)="filtrar($event)"></filtrar-usuario>
+
+<div class="tabela-listagem mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+      <td mat-cell *matCellDef="let row"> {{row.nome}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuário </th>
+      <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cpf">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> CPF </th>
+      <td mat-cell *matCellDef="let row"> {{ row.cpf | mask: 'CPF_CNPJ' }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> status </th>
+      <td mat-cell *matCellDef="let row"> {{row.status ? 'Ativo' : 'Inativo' }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acao">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let row">
+        <div>
+          <a matTooltip="Editar" (click)="navigate('usuario/edit/'+row.id)"> <i class="bi bi-pencil-square"></i></a>
+          <a *ngIf="row.status" matTooltip="Inativar" (click)="openDialog(row)"> <i class="bi bi-trash"></i></a>
+        </div>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        <h1 class="erro-filtro">Não foram localizados dados no filtro passado. <br> Faça um novo filtro, ou tente
+          novamente.</h1>
+      </td>
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[ 10, 25, 50, 75, 100]" [pageSize]="25"></mat-paginator>
+</div>

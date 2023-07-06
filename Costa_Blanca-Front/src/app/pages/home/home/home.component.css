@@ -1,0 +1,95 @@
+/*DropDown mes*/
+
+.retirada-produto button {
+  margin: 0px;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+}
+
+.info-dash {
+  font-size: 1.7em;
+}
+
+.titulo-mes {
+  margin-left: 60px;
+}
+
+/*fim DropDown mes*/
+
+.dados-dashboard {
+  margin-top: 30px;
+}
+
+/*Ranking produtos*/
+
+.ranking-produtos {
+  border: 1px solid #45484c;
+  width: 500px;
+  border-radius: 8px;
+  height: 320px;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: #1e90ff;
+  background-color: #f8f9fa;
+}
+
+/* graficos*/
+
+.grafico-comparativo {
+  height: 300px;
+  width: 500px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.qtd-retirada {
+  border-radius: 8px;
+  height: 300px;
+  width: 400px;
+  border: 1px solid #45484c;
+  flex-direction: row;
+  display: flex;
+}
+
+.qtd-retirada .name-qtd {
+  background-color: #45484c;
+  color: rgb(147, 145, 145);
+  width: 50%;
+  align-items: center;
+  display: flex;
+  text-align: center;
+  font-weight: bolder;
+  padding: 10px;
+  font-size: 21px;
+}
+
+.qtd-retirada .qtd {
+  width: 50%;
+  display: flex;
+  font-size: 50px;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.qtd .bi-ticket {
+  transform: rotate(45deg);
+}
+
+/**/
+
+.custom-select {
+  display: flex;
+  align-items: center;
+}
+
+.custom-select select {
+  margin-right: 8px;
+}

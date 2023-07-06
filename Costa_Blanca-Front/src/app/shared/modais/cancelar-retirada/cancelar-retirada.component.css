@@ -1,0 +1,22 @@
+h1 {
+  background-color: black;
+  color: white !important;
+}
+
+.mat-mdc-form-field {
+  display: contents !important;
+}
+
+.btn-confirm-modal {
+  width: 200px;
+  background-color: green;
+}
+
+
+.error {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+}

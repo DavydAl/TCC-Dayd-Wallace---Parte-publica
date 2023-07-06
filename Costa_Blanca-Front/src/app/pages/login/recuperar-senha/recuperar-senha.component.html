@@ -1,0 +1,73 @@
+<!-- <div class="esqueci m-auto position-absolute">
+  <div class="container p-5 m-5">
+    <form #form="ngForm">
+      <div class="text-center">
+        <h2>Recuperar Acesso</h2>
+        <h5>Se deseja recuperar o seu acesso, preencha os dados abaixo e aguarde o retorno do seu gestor em seu e-mail
+        </h5>
+      </div>
+      <div>
+        <label for="name">Nome completo: *</label>
+        <input type="text" id="name" name="name" class="form-control" [(ngModel)]="usuario." [(ngModel)]="usuario.nome" required>
+      </div>
+      <div>
+        <label for="email">E-mail: *</label>
+        <input type="email" id="email" name="email" class="form-control" [(ngModel)]="usuario." [(ngModel)]="usuario.email" required>
+      </div>
+      <div>
+        <label for="name">CPF: *</label>
+        <input mask="{mask: mask}" id="cpf" name="cpf" class="form-control" [(ngModel)]="usuario." [(ngModel)]="usuario.cpf" required>
+      </div>
+      <div>
+        <label for="email">Usuário: tem que mexer</label>
+        <input type="email" id="email" name="email" class="form-control" [(ngModel)]="usuario." [(ngModel)]="usuario.email">
+      </div>
+    </form>
+
+    <button type="submit" (click)="salvar(usuario)" class="btn btn-primary">Enviar</button>
+  </div>
+
+</div> -->
+
+<section class="m-auto col-auto">
+  <div class="container">
+
+    <div class=" d-flex row">
+      <div class="d-flex column m-1"><a href="http://localhost:4200/" tooltip="Voltar" class="btn btn-voltar">
+          <i class="bi bi-arrow-left-circle voltar"></i>
+        </a>
+        <div class="d-flex justify-content-center w-100"><img src="./assets/imagens/cb-nome-preto.png"></div>
+      </div>
+      <div>
+        <form>
+          <div class="text-center">
+            <h2>Recuperar Acesso</h2>
+            <h5>Se deseja recuperar o seu acesso, preencha os dados abaixo e aguarde os dados de acesso no seu e-mail.
+            </h5>
+          </div>
+          <div>
+            <label for="name">Nome completo: *</label>
+            <input type="text" id="name" name="name" class="form-control" [(ngModel)]="usuario.nome">
+          </div>
+          <div>
+            <label for="cpf">CPF: *</label>
+            <input mask="" id="cpf" name="cpf" mask="000.000.000-00" class="form-control" [(ngModel)]="usuario.cpf">
+          </div>
+          <div>
+            <label for="email">E-mail: *</label>
+            <input type="email" id="email" name="email" class="form-control" [(ngModel)]="usuario.email">
+          </div>
+          <div class="text-center text-lg-start mt-4 pt-2 ">
+            <button type="button" tooltip="Enviar" class="btn btn-dark w-100" (click)="salvar()">Enviar</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- <div class=" align-content-center imagem-logo col mx-auto text-center">
+        <h1 class="text-center ">Sistema de Estoque
+        </h1>
+        <img src="./assets/imagens/cb-nome-branco.jpg" class="img-fluid" alt="Sample image">
+      </div> -->
+    </div>
+  </div>
+</section>

@@ -1,0 +1,87 @@
+<div>
+  <h2>Usuário</h2>
+  <form [formGroup]="usuarioForm" (ngSubmit)="salvar()">
+
+    <div class=" column d-flex align-items-center">
+      <div class=" row d-flex justify-content-between align-items-center">
+        <div class="form-group  column d-flex justify-content-between align-items-center">
+          <div class="form-group col-9 p-1">
+            <label for="name">Nome *</label>
+            <input type="text" id="name" name="name" class="form-control" formControlName="nome">
+          </div>
+          <div class="form-group col-3 p-1">
+            <label for="name">CPF *</label>
+            <input class="form-control" type="text" formControlName="cpf" name="cpf" pattern="[0-9]*"
+              placeholder="000.000.000/00" mask="CPF_CNPJ" maxlength="14">
+
+
+          </div>
+        </div>
+        <div class="form-group  column d-flex justify-content-between align-items-center">
+          <div class="form-group col-6 p-1">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" class="form-control" formControlName="email">
+          </div>
+          <div class="form-group col-3 p-1">
+            <label for="password">Senha</label>
+            <input type="password" id="senha" name="senha" class="form-control" formControlName="senha">
+          </div>
+
+          <div class="form-group col-3 p-1">
+            <label for="confirmPassword">Confirmar Senha</label>
+            <!-- <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"
+              formControlName="confirmPassword"> -->
+            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"
+              formControlName="confirmPassword">
+          </div>
+        </div>
+        <div class="form-group  column d-flex align-items-start">
+          <div class="form-group col-4 p-1">
+            <label class="form-label">Funcionário</label>
+            <select class="form-select" formControlName="funcionarioId">
+              <option selected [value]="0">Selecione</option>
+              <option *ngFor="let item of this.lstFuncionario" [value]="item.id">{{item.nomeCompleto}}</option>
+            </select>
+          </div>
+
+          <div class="form-group col-4 p-1">
+            <label class="form-label">Status *</label>
+            <select class="form-select" formControlName="status">
+              <option [value]="true">Ativo</option>
+              <option [value]="false">Inativo</option>
+            </select>
+          </div>
+          <div class="form-group col-4 m-4">
+            <div class="p-1"></div>
+            <mat-checkbox formControlName="perfilGerencial">Perfil Gerencial</mat-checkbox>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="p-1 card col-3 imagem-usuario align-items-center">
+        <div class="imagem-container">
+          <label for="inputImagem" class="imagem-label">
+            <img [src]="this.usuarioForm.value.foto" alt="Foto do Usuário" alt="Foto do Usuário" class="imagem-fixa">
+            <input type="file" id="inputImagem" style="display: none" (change)="onImagemSelecionada($event)">
+          </label>
+        </div>
+        <div>
+          <a (click)="selecionarImagem()">
+            <i class="bi bi-pencil-square"></i>
+          </a>
+          <a (click)="removerImagem()">
+            <i class="bi bi-trash"></i>
+          </a>
+        </div>
+      </div> -->
+
+
+    </div>
+
+
+    <div class="d-flex justify-content-end p-1 btn-salvar">
+      <div class="p-10"></div>
+      <button type="submit" class="btn fixed-width btn-success">Salvar</button>
+    </div>
+
+  </form>
+</div>

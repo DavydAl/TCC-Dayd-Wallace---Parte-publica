@@ -1,0 +1,66 @@
+<div class="card-filtro">
+  <div class="form-inline d-flex row">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="form-group m-lg-1 col-1">
+        <label class="form-label">Código</label>
+        <input class="form-control" type="number" min="0" [(ngModel)]="filtro.id">
+      </div>
+      <div class="form-group m-lg-1 col-4">
+        <label class="form-label">Nome</label>
+        <input class="form-control" type="text" [(ngModel)]="filtro.descricao">
+      </div>
+      <div class="form-group m-lg-1 col-2">
+        <label class="form-label" for="exampleMultiselect">Cor</label>
+        <select class="form-select" [(ngModel)]="filtro.corId" placeholder="Selecione">
+          <option value="">Selecione</option>
+          <option *ngFor="let option of lstCor" [value]="option.id">
+            {{ option.descricao }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group m-lg-1 col-2">
+        <label class="form-label" for="exampleMultiselect">Tamanho</label>
+        <select class="form-select" [(ngModel)]="filtro.tamanhoId" placeholder="Selecione">
+          <option value="">Selecione</option>
+          <option *ngFor="let option of lstTamanho" [value]="option.id">
+            {{ option.descricao }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group col-2">
+        <label class="form-label" for="Status">Status</label>
+        <select class="form-select" [(ngModel)]="filtro.status" placeholder="Selecione">
+          <option value="">Todos</option>
+          <option [value]="true">Ativo</option>
+          <option [value]="false">Inativo</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="form-group m-lg-1 col-2">
+        <label class="form-label">Código Externo</label>
+        <input class="form-control" type="text" min="0" maxlength="11" [(ngModel)]="filtro.codigoAuxiliar">
+      </div>
+      <div class="form-group m-lg-1 col-4">
+        <label class="form-label">Fornecedor</label>
+        <select class="form-select" [(ngModel)]="filtro.fornecedorId" placeholder="Selecione">
+          <option value="">Selecione</option>
+          <option *ngFor="let option of lstFornecedor" [value]="option.id">
+            {{ option.nomeRazao }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group col-1">
+      </div>
+      <div class="form-group col-1">
+      </div>
+      <div class="form-group col-1">
+
+      </div>
+      <div class="form-group d-flex justify-content-end">
+        <button type="button" class="fixed-width btn btn-secondary mt-3" (click)="filtrar()">Filtrar</button>
+      </div>
+    </div>
+  </div>
+</div>

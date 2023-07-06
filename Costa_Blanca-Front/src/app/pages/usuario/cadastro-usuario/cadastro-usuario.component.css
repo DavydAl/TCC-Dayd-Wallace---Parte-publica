@@ -1,0 +1,19 @@
+.imagem-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.imagem-fixa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagem-usuario {
+  width: 15rem;
+  height: 15rem;
+}

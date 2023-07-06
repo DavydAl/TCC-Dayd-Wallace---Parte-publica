@@ -1,0 +1,160 @@
+<div class="d-flex flex-column">
+  <mat-card-title class="mb-3">MANUTENÇÃO DE PRODUTOS</mat-card-title>
+  <h3 class="text-start p-1">
+    Filtros <i class="bi bi-info-circle" matTooltip="Selecione os filtros para exibir os produtos"></i>
+  </h3>
+  <mat-card class="custom-card">
+    <div class="d-flex flex-row justify-content-between">
+
+      <div class="form-group w-25 p-1">
+        <label class="form-label">Descrição do produto
+          <i class="bi bi-info-circle" matTooltip="digite apenas a descrição sem a cor e tamanho"></i></label>
+        <input class="form-control" type="text" [(ngModel)]="filtro.descricao" required>
+      </div>
+
+      <div class="form-group w-25 p-1">
+        <label class="form-label" for="fornecedorSelect">Selecione um fornecedor</label>
+        <select class="form-select" id="fornecedorSelect" [(ngModel)]="filtro.fornecedorId">
+          <option value="" selected>Selecione</option>
+          <option *ngFor="let fornecedor of lstFornecedor" [value]="fornecedor.id">{{ fornecedor.nomeRazao }}</option>
+        </select>
+      </div>
+
+      <div class="form-group w-25 p-1">
+        <label class="form-label" for="colecaoSelect">Selecione uma coleção</label>
+        <select class="form-select" id="colecaoSelect" [(ngModel)]="filtro.colecaoId">
+          <option value="" selected>Selecione</option>
+          <option *ngFor="let colecao of lstColecao" [value]="colecao.id">{{ colecao.descricao }}</option>
+        </select>
+      </div>
+
+      <div class="form-group w-25 p-1">
+        <label class="form-label" for="corSelect">Selecione uma cor</label>
+        <select class="form-select" id="corSelect" [(ngModel)]="filtro.corId">
+          <option value="" selected>Selecione</option>
+          <option *ngFor="let cor of lstCor" [value]="cor.id">{{ cor.descricao }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="d-flex flex-row justify-content-between">
+      <div class="form-group w-25 p-1">
+        <label class="form-label" for="linhaSelect">Selecione uma linha</label>
+        <select class="form-select" id="linhaSelect" [(ngModel)]="filtro.linhaId">
+          <option value="" selected>Selecione</option>
+          <option *ngFor="let linha of lstLinha" [value]="linha.id">{{ linha.descricao }}</option>
+        </select>
+      </div>
+
+      <div class="form-group w-25 p-1">
+        <label class="form-label" for="marcaSelect">Selecione uma marca</label>
+        <select class="form-select" id="marcaSelect" [(ngModel)]="filtro.marcaId">
+          <option value="" selected>Selecione</option>
+          <option *ngFor="let marca of lstMarca" [value]="marca.id">{{ marca.descricao }}</option>
+        </select>
+      </div>
+
+      <div class="form-group w-25 p-1">
+        <label class="form-label" for="setorSelect">Selecione um setor</label>
+        <select class="form-select" id="setorSelect" [(ngModel)]="filtro.setorId">
+          <option value="" selected>Selecione</option>
+          <option *ngFor="let setor of lstSetor" [value]="setor.id">{{ setor.descricao }}</option>
+        </select>
+      </div>
+
+      <div class="form-group w-25 p-1">
+        <label class="form-label" for="tamanhoSelect">Selecione um tamanho</label>
+        <select class="form-select" id="tamanhoSelect" [(ngModel)]="filtro.tamanhoId">
+          <option value="" selected>Selecione</option>
+          <option *ngFor="let tamanho of lstTamanho" [value]="tamanho.id">{{ tamanho.descricao }}</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="d-flex flex-row justify-content-between">
+      <div class="form-group w-25 p-1">
+        <label class="form-label" for="linhaSelect">status</label>
+        <select class="form-select" id="linhaSelect" [(ngModel)]="filtro.status">
+          <option selected>Todos</option>
+          <option [value]="true">Ativo</option>
+          <option [value]="false">Inativo</option>
+        </select>
+      </div>
+      <div class="form-group w-25 p-1"></div>
+      <div class="form-group w-25 p-1"></div>
+    </div>
+  </mat-card>
+
+  <div class="custom-card-content justify-content-between d-flex flex-column">
+    <div class="p-1 selecao-menu-manutencao">
+      <h3 class="text-sm-start">
+        Campos <i class="bi bi-info-circle"
+          matTooltip="Selecione os campos que serão exibidos na tela de manutenção"></i>
+      </h3>
+      <mat-card class="custom-card w-100">
+        <div class="custom-card-content justify-content-between d-flex">
+
+          <div class="form-group mb-2">
+            <mat-checkbox [(ngModel)]="menuManutencao.descricao" [checked]="true" disabled>Descrição</mat-checkbox>
+          </div>
+
+          <div class="form-group mb-2">
+            <mat-checkbox [(ngModel)]="menuManutencao.referencia">Referência</mat-checkbox>
+          </div>
+
+          <div class="form-group mb-2">
+            <mat-checkbox [(ngModel)]="menuManutencao.codigoAuxiliar">Código Auxiliar</mat-checkbox>
+          </div>
+
+          <div class="form-group mb-2">
+            <mat-checkbox [(ngModel)]="menuManutencao.setorId">Setor</mat-checkbox>
+          </div>
+
+          <div class="form-group mb-2">
+            <mat-checkbox [(ngModel)]="menuManutencao.linhaId">Linha</mat-checkbox>
+          </div>
+
+          <div class="form-group mb-2">
+            <mat-checkbox [(ngModel)]="menuManutencao.marcaId">Marca</mat-checkbox>
+          </div>
+
+          <div class="form-group mb-2">
+            <mat-checkbox [(ngModel)]="menuManutencao.colecaoId">Coleção</mat-checkbox>
+          </div>
+        </div>
+        <div class="custom-card-content justify-content-between d-flex">
+          <div class="form-group mb-2">
+            <mat-checkbox [(ngModel)]="menuManutencao.fornecedorId">Fornecedor</mat-checkbox>
+          </div>
+
+          <div class="form-group mb-2">
+            <mat-checkbox [(ngModel)]="menuManutencao.precoVenda">Preço de Venda</mat-checkbox>
+          </div>
+
+          <div class="form-group mb-2">
+            <mat-checkbox [(ngModel)]="menuManutencao.precoCusto">Preço de Custo</mat-checkbox>
+          </div>
+
+          <div class="form-group mb-2">
+            <mat-checkbox [(ngModel)]="menuManutencao.tamanhoId">Tamanho</mat-checkbox>
+          </div>
+
+          <div class="form-group mb-2">
+            <mat-checkbox [(ngModel)]="menuManutencao.corId">Cor</mat-checkbox>
+          </div>
+
+          <div class="form-group mb-2">
+            <mat-checkbox [(ngModel)]="menuManutencao.quantidade">Qtd Estoque</mat-checkbox>
+          </div>
+          <div class="form-group mb-2"></div>
+        </div>
+
+      </mat-card>
+    </div>
+
+  </div>
+
+</div>
+<div class="form-group mt-3 d-flex justify-content-end">
+  <button type="button" class="fixed-width btn btn-secondary" (click)="filtrar()">Filtrar</button>
+</div>

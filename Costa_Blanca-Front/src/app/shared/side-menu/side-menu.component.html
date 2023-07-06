@@ -1,0 +1,133 @@
+<nav class="card-principal menu-primary sb-sidenav accordion sb-sidenav-dark">
+  <a (click)="navigate('')"><img class="logo-side-menu"
+      [src]="isExpanded ? './assets/imagens/cb-nome-preto.png' : './assets/imagens/cb-logo-preta-reduziada.png'"
+      alt=""></a>
+
+  <div class="text-start">
+    <ul class="nav flex-column justify-content-start ">
+      <li *ngIf="perfilGerencial" class="nav-item" [ngClass]="{'selecionado': selectedItem === ''}">
+        <a class="nav-link btn d-flex justify-content-start" (click)="navigate('')">
+          <i class="bi bi-speedometer2"></i>
+          <span *ngIf="isExpanded"> Home</span>
+        </a>
+      </li>
+      <li *ngIf="perfilGerencial" class="nav-item" [ngClass]="{'selecionado': selectedItem === 'dados-empresa'}">
+        <a class="nav-link btn d-flex justify-content-start" (click)="navigate('dados-empresa')">
+          <i class="bi bi-building-gear"></i>
+          <span *ngIf="isExpanded">Dados Empresa</span>
+        </a>
+      </li>
+      <li *ngIf="perfilGerencial" class="nav-item" [ngClass]="{'selecionado': selectedItem === 'usuario'}">
+        <a (click)="navigate('usuario')" class="nav-link btn d-flex justify-content-start">
+          <i class="bi bi-person"></i>
+          <span *ngIf="isExpanded"> Usuário</span>
+        </a>
+      </li>
+      <li *ngIf="perfilGerencial" class="nav-item" [ngClass]="{'selecionado': selectedItem === 'funcionario'}">
+        <a class="nav-link btn d-flex justify-content-start" (click)="navigate('funcionario')">
+          <i class="bi bi-person-badge-fill"></i>
+          <span *ngIf="isExpanded">Funcionário</span>
+        </a>
+      </li>
+      <li *ngIf="perfilGerencial" class="nav-item">
+        <button class="accordion nav-link d-flex justify-content-between" [class.active]="cadastrosExpanded"
+          (click)="toggleCadastros()">
+          <i class="bi bi-file-earmark-plus"></i><span *ngIf="isExpanded">Cad. Auxiliares</span>
+          <i class="bi" *ngIf="isExpanded" [class.bi-caret-up]="cadastrosExpanded"
+            [class.bi-caret-down]="!cadastrosExpanded"></i>
+        </button>
+      </li>
+
+      <li class="nav-item" *ngIf="cadastrosExpanded"
+        [ngClass]="{'selecionado': selectedItem === 'cadastro-auxiliar/cor'}">
+        <a class="nav-link btn d-flex justify-content-start" (click)="navigate('cadastro-auxiliar/cor')">
+          <div class="cad-texto"></div><i class="bi bi-palette-fill"></i>
+          <span *ngIf="isExpanded">Cor</span>
+        </a>
+      </li>
+
+      <li class="nav-item" *ngIf="cadastrosExpanded"
+        [ngClass]="{'selecionado': selectedItem === 'cadastro-auxiliar/colecao'}">
+        <a class="nav-link btn d-flex justify-content-start" (click)="navigate('cadastro-auxiliar/colecao')">
+          <div class="cad-texto"></div><i class="bi bi-tags-fill"></i>
+          <span *ngIf="isExpanded">Coleção</span>
+        </a>
+      </li>
+
+      <li class="nav-item" *ngIf="cadastrosExpanded"
+        [ngClass]="{'selecionado': selectedItem === 'cadastro-auxiliar/linha'}">
+        <a class="nav-link btn d-flex justify-content-start" (click)="navigate('cadastro-auxiliar/linha')">
+          <div class="cad-texto"></div><i class="bi bi-vector-pen"></i>
+          <span *ngIf="isExpanded">Linha</span>
+        </a>
+      </li>
+
+      <li class="nav-item" *ngIf="cadastrosExpanded"
+        [ngClass]="{'selecionado': selectedItem === 'cadastro-auxiliar/marca'}">
+        <a class="nav-link btn d-flex justify-content-start" (click)="navigate('cadastro-auxiliar/marca')">
+          <div class="cad-texto"></div><i class="bi bi-bookmark-fill"></i>
+          <span *ngIf="isExpanded">Marca</span>
+        </a>
+      </li>
+
+      <li class="nav-item" *ngIf="cadastrosExpanded"
+        [ngClass]="{'selecionado': selectedItem === 'cadastro-auxiliar/setor'}">
+        <a class="nav-link btn d-flex justify-content-start" (click)="navigate('cadastro-auxiliar/setor')">
+          <div class="cad-texto"></div><i class="bi bi-check-square-fill"></i>
+          <span *ngIf="isExpanded">Setor</span>
+        </a>
+      </li>
+
+      <li class="nav-item" *ngIf="cadastrosExpanded"
+        [ngClass]="{'selecionado': selectedItem === 'cadastro-auxiliar/tamanho'}">
+        <a class="nav-link btn d-flex justify-content-start" (click)="navigate('cadastro-auxiliar/tamanho')">
+          <div class="cad-texto"></div><i class="bi bi-rulers"></i>
+          <span *ngIf="isExpanded">Tamanho</span>
+        </a>
+      </li>
+
+      <!-- <li class="nav-item" *ngIf="cadastrosExpanded"
+        [ngClass]="{'selecionado': selectedItem === 'cadastro-auxiliar/estoque'}">
+        <a class="nav-link btn d-flex justify-content-start" (click)="navigate('cadastro-auxiliar/estoque')">
+          <div class="cad-texto"></div><i class="bi bi-box-seam"></i>
+          <span *ngIf="isExpanded">Estoque</span>
+        </a>
+      </li> -->
+
+      <li class="nav-item" *ngIf="cadastrosExpanded"
+        [ngClass]="{'selecionado': selectedItem === 'cadastro-auxiliar/forma-retirada'}">
+        <a class="nav-link btn d-flex justify-content-start" (click)="navigate('cadastro-auxiliar/forma-retirada')">
+          <div class="cad-texto"></div><i class="bi bi-bag-check-fill"></i>
+          <span *ngIf="isExpanded">Forma de Retirada</span>
+        </a>
+      </li>
+
+      <li class="nav-item" [ngClass]="{'selecionado': selectedItem === 'cliente-fornecedor'}">
+        <a class="nav-link btn d-flex justify-content-start" (click)="navigate('cliente-fornecedor')">
+          <i class="bi bi-people"></i>
+          <span *ngIf="isExpanded">Cliente/Fornecedor</span>
+        </a>
+      </li>
+      <li class="nav-item" [ngClass]="{'selecionado': selectedItem === 'produto'}">
+        <a class="nav-link btn d-flex justify-content-start" (click)="navigate('produto')">
+          <i class="bi bi-tag"></i>
+          <span *ngIf="isExpanded">Produto</span>
+        </a>
+      </li>
+
+      <li *ngIf="perfilGerencial" class="nav-item" [ngClass]="{'selecionado': selectedItem === 'produto/manutencao'}">
+        <a class="nav-link btn d-flex justify-content-start" (click)="navigate('produto/manutencao')">
+          <i class="bi bi-tools"></i>
+          <span *ngIf="isExpanded">Manutenção</span>
+        </a>
+      </li>
+      <li class="nav-item" [ngClass]="{'selecionado': selectedItem === 'retirada'}">
+        <a class="nav-link btn d-flex justify-content-start" (click)="navigate('retirada')">
+          <i class="bi bi-shop"></i>
+          <span *ngIf="isExpanded">Retirada de Produto</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</nav>

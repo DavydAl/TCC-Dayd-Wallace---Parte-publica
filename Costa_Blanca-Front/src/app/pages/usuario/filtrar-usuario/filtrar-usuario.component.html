@@ -1,0 +1,32 @@
+<div class="card-filtro">
+  <div class="form-inline d-flex justify-content-between">
+    <div class="form-inline d-flex justify-content-center">
+      <div class="form-group margin-right-custom">
+        <label class="form-label">Nome</label>
+        <input class="form-control fixed-width-nome " type="text" [(ngModel)]="filtro.nome">
+      </div>
+
+      <div class="form-group margin-right-custom">
+        <label class="form-label">Usuário</label>
+        <input class="form-control fixed-width" type="text" [(ngModel)]="filtro.email">
+      </div>
+
+      <div class="form-group margin-right-custom">
+        <label class="form-label">CPF</label>
+        <input class="form-control fixed-width" type="text" placeholder="000.000.000/00" mask="CPF_CNPJ" maxlength="14"
+          [(ngModel)]="filtro.cpf">
+      </div>
+
+      <div class="form-group margin-right-custom">
+        <label class="form-label">Status</label>
+        <select class="form-select fixed-width" aria-label="Default select example" [(ngModel)]="filtro.status">
+          <option>Todos</option>
+          <option [value]="true">Ativo</option>
+          <option [value]="false">Inativo</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group align-items-center">
+      <button type="button" class="fixed-width btn btn btn-secondary" (click)="filtrar()">Filtrar</button>
+    </div>
+  </div>

@@ -1,0 +1,16 @@
+h1 {
+  text-align: center;
+  background-color: black;
+  color: white !important;
+}
+
+.mat-mdc-form-field {
+  display: contents !important;
+}
+
+.btn-confirm-modal {
+  color: white;
+  width: 200px;
+  margin-bottom: 5px;
+  background-color: green;
+}

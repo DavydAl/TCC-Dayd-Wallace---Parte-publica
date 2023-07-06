@@ -1,0 +1,24 @@
+<div class="d-felx w-100">
+  <div class="d-flex flex-row pagina">
+    <div [ngClass]="{'menu-expanded': isExpanded}" [style.width]="isExpanded ? '12%' : '3%'">
+      <app-side-menu [isExpanded]="isExpanded" [selectedItem]="selectedItem"></app-side-menu>
+    </div>
+    <div [style.width]=" isExpanded ? '88%' : '97%'" [style.max-width]=" isExpanded ? '88%' : '97%'">
+      <div class="align-items-center d-flex justify-content-between menu-topo">
+        <div class="icone-menu">
+          <i class="bi bi-list bi-2x" (click)="toggleMenu()"></i>
+        </div>
+        <div class="icone-menu">
+          Sistema de Estoque
+        </div>
+        <button mat-button [matMenuTriggerFor]="menu"><i class="bi bi-person-circle"></i></button>
+        <mat-menu #menu="matMenu">
+          <!-- <button mat-menu-item>Alterar dados</button> -->
+          <button mat-menu-item (click)="editarSenha()">Alterar senha</button>
+          <button mat-menu-item (click)="deslogar()">Desconectar</button>
+        </mat-menu>
+      </div>
+      <div class="card-pricipal"> <router-outlet></router-outlet></div>
+    </div>
+  </div>
+</div>

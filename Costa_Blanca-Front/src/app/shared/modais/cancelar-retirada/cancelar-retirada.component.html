@@ -1,0 +1,13 @@
+<h1 mat-dialog-title align="center">ESTORNAR RETIRADA</h1>
+<div>
+  <div class="form-group m-3">
+    <label class="form-label">Explique o motivo *</label>
+    <textarea type="number" min="0" class="form-control" required [(ngModel)]="ticket.obs"
+      [ngClass]="{ 'error': !ticket.obs }"></textarea>
+    <div class="error-message" *ngIf="!ticket.obs">Campo obrigatório</div>
+  </div>
+</div>
+
+<mat-dialog-actions mat-dialog-actions class="botoes-modal" align="center">
+  <button class="btn-confirm-modal" mat-button cdkFocusInitial (click)="salvar()">Salvar Alteração</button>
+</mat-dialog-actions>
